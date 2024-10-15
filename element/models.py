@@ -19,7 +19,7 @@ class Element(models.Model):
     street = models.CharField(
         max_length=100, verbose_name="Улица", blank=True, null=True
     )
-    number_house = models.ImageField(verbose_name="Номер дома", blank=True, null=True)
+    number_house = models.IntegerField(verbose_name="Номер дома", blank=True, null=True)
     network_level = models.IntegerField(verbose_name="Уровень сети", choices=LEVEL)
     shipper = models.ForeignKey(
         "self",
