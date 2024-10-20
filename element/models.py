@@ -52,7 +52,9 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=150, verbose_name="Название продукта")
     release_date = models.DateField(verbose_name="Дата выхода продукта на рынок")
-    product_model = models.CharField(max_length=100, verbose_name="Модель продукта", blank=True, null=True)
+    product_model = models.CharField(
+        max_length=100, verbose_name="Модель продукта", blank=True, null=True
+    )
 
     def __str__(self):
         return f"{self.name} - {self.product_model}"
