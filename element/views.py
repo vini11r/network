@@ -13,6 +13,12 @@ class ElementViewSet(ModelViewSet):
     search_fields = ("name", "country",)
     filterset_fields = ("country",)
 
+    def perform_update(self, serializer):
+        if "debt" in serializer.validated_data:
+            serializer.validated_data.pop("debt")
+            raise Exception("Вы не можете менять поле задолженности")
+        super().perform_update(serializer)
+
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
