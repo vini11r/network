@@ -3,6 +3,7 @@ from rest_framework import filters
 from rest_framework.viewsets import ModelViewSet
 
 from element.models import Element, Product
+from element.permissions import IsActive
 from element.serializers import ElementSerializer, ProductSerializer
 
 
@@ -12,6 +13,7 @@ class ElementViewSet(ModelViewSet):
     serializer_class = ElementSerializer
     search_fields = ("name", "country",)
     filterset_fields = ("country",)
+    permission_classes = [IsActive]
 
     def perform_update(self, serializer):
         if "debt" in serializer.validated_data:
@@ -23,4 +25,5 @@ class ElementViewSet(ModelViewSet):
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [IsActive]
 
