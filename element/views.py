@@ -11,7 +11,10 @@ class ElementViewSet(ModelViewSet):
     queryset = Element.objects.all()
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     serializer_class = ElementSerializer
-    search_fields = ("name", "country",)
+    search_fields = (
+        "name",
+        "country",
+    )
     filterset_fields = ("country",)
     permission_classes = [IsActive]
 
@@ -26,4 +29,3 @@ class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsActive]
-
