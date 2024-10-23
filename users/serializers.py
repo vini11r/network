@@ -11,6 +11,16 @@ class UserSerializer(serializers.ModelSerializer):
             "pk",
             "email",
         )
+
+
+class UserCreateUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "password",
+        )
         validators = [
             user_password,
         ]
